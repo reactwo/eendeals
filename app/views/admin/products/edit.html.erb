@@ -1,0 +1,33 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Admin</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_products_path %>">Products</a></li>
+        <li class="breadcrumb-item"><span>Edit Product</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="element-wrapper">
+
+                <%= render 'layouts/flash' %>
+
+                <div class="element-box">
+                  <%= render 'form' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

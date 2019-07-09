@@ -1,0 +1,8 @@
+{
+  "name": "eendeals-rails",
+  "private": true,
+  "dependencies": {
+    "lightbox2": "^2.10.0",
+    "yadcf": "^0.9.2"
+  }
+}

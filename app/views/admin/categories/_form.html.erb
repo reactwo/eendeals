@@ -1,0 +1,48 @@
+<%
+  url = @category.new_record? ? admin_categories_path : admin_category_path(@category)
+%>
+<%= form_for @category, url: url do |f| %>
+  <h5 class="form-header">New Category</h5>
+
+  <% if @category.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @category.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :task_id %>
+    <%= f.collection_select :task_id, Task.where(active: true).order(id: :desc), :id, :name, {}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Banner ID' %>
+    <%= f.text_field :banner_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Interstitial ID' %>
+    <%= f.text_field :interstitial_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label 'Rewarded ID' %>
+    <%= f.text_field :rewarded_id, class: 'form-control' %>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

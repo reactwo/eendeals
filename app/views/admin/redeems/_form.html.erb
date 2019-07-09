@@ -1,0 +1,11 @@
+<%= form_for '', method: :delete, url: admin_decline_redeem_path(@redeem) do |f| %>
+
+  <div class="form-group">
+    <%= f.label :reason %>
+    <%= f.text_field :reason, class: 'form-control' %>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

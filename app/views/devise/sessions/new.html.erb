@@ -1,0 +1,38 @@
+<body class="auth-wrapper">
+<div class="all-wrapper menu-side with-pattern">
+  <div class="auth-box-w">
+    <div class="logo-w"><a href="#"><img alt="" src="<%= asset_path 'logo-big.png' %>"></a></div>
+    <h4 class="auth-header">Login Form</h4>
+
+    <% if flash[:alert] %>
+      <div class="alert alert-warning alert-dismissible fade show" role="alert"><button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true"> ×</span></button><%= flash[:alert] %></div>
+    <% elsif flash[:notice] %>
+      <div class="alert alert-danger alert-dismissible fade show" role="alert"><button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true"> ×</span></button><%= flash[:notice] %></div>
+    <% end %>
+
+    <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
+      <div class="form-group">
+        <%= f.label :mobile %><br/>
+        <%= f.text_field :mobile, autofocus: true, class: 'form-control', placeholder: 'Mobile' %>
+        <div class="pre-icon os-icon os-icon-user-male-circle"></div>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :password %><br/>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control', placeholder: 'Password' %>
+        <div class="pre-icon os-icon os-icon-fingerprint"></div>
+      </div>
+
+      <div class="buttons-w">
+        <button class="btn btn-primary" type="submit">Log me in</button>
+        <div class="form-check-inline">
+          <% if devise_mapping.rememberable? -%>
+            <%= f.check_box :remember_me %>
+            <%= f.label :remember_me %>
+          <% end -%>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
+</body>

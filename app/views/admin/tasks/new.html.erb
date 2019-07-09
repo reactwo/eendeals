@@ -1,0 +1,32 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Admin</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_tasks_path %>">Tasks</a></li>
+        <li class="breadcrumb-item"><span>New Task</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="element-wrapper">
+                <div class="element-box">
+                  <h5 class="form-header">New Task</h5>
+
+                  <%= render 'form' %>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

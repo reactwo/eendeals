@@ -1,0 +1,47 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_notifications_path %>">Notifications</a></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper">
+            <h6 class="element-header">Notifications</h6>
+
+            <%= render 'layouts/flash' %>
+
+            <div class="element-box">
+              <h5 class="form-header">Notifications List</h5>
+              <div class="form-desc">
+                <a href="<%= admin_new_notification_path %>" class="mr-2 mb-2 btn btn-outline-primary"> New Notification</a>
+              </div>
+              <div class="table-responsive">
+                <table id="notifications-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_notifications_path %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Message</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

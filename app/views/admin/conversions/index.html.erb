@@ -1,0 +1,49 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_conversions_path %>">Conversions</a></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper">
+            <h6 class="element-header">Conversions</h6>
+
+            <%= render 'layouts/flash' %>
+
+            <div class="element-box">
+              <h5 class="form-header">Conversions List</h5>
+              <div class="table-responsive">
+                <table id="conversions-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_conversions_path %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Transaction ID</th>
+                    <th>Company</th>
+                    <th>Offer</th>
+                    <th>Deal</th>
+                    <th>Status</th>
+                    <th>User</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

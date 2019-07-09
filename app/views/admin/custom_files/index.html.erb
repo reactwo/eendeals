@@ -1,0 +1,48 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_custom_files_path %>">Custom Files</a></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper">
+            <h6 class="element-header">Offers</h6>
+
+            <%= render 'layouts/flash' %>
+
+            <div class="element-box">
+              <h5 class="form-header">Custom Files List</h5>
+              <div class="form-desc">
+                <a href="<%= admin_new_custom_file_path %>" class="mr-2 mb-2 btn btn-outline-primary">New Custom File</a>
+              </div>
+              <div class="table-responsive">
+                <table id="custom-files-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_custom_files_path %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Link</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

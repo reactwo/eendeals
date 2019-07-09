@@ -1,0 +1,69 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Admin</a></li>
+        <li class="breadcrumb-item"><span>Quiz Winner Selection</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="element-wrapper">
+                <h6 class="element-header">Quiz Winner Selection</h6>
+                <%= render 'layouts/flash' %>
+
+                <div class="element-box">
+                  <h5 class="form-header">Choose Details</h5>
+
+                  <%= form_for 'quiz' do |f| %>
+                    <div class="form-group">
+                      <%= f.label 'Date of Quiz' %>
+                      <%= f.date_select :date, {}, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label 'No of winners' %>
+                      <%= f.text_field :winners, class: 'form-control', type: 'number', value: 0 %>
+                    </div>
+
+                    <div class="form-group">
+                      <label>No of Dummy IDs</label>
+                      <%= f.text_field :dummies, class: 'form-control', type: 'number', value: 155 %>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Real winners 1st prize</label>
+                      <%= f.text_field :first_prize, class: 'form-control', type: 'number', value: 0 %>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Real winners 2nd prize</label>
+                      <%= f.text_field :second_prize, class: 'form-control', type: 'number', value: 0 %>
+                    </div>
+
+                    <div class="form-group">
+                      <label>Real winners 3rd prize</label>
+                      <%= f.text_field :third_prize, class: 'form-control', type: 'number', value: 0 %>
+                    </div>
+
+                    <div class="form-buttons-w">
+                      <button class="btn btn-primary" type="submit"> Submit</button>
+                    </div>
+                  <% end %>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

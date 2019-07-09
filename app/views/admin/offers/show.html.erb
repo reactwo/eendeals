@@ -1,0 +1,79 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Admin</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_offers_path %>">Offers</a></li>
+        <li class="breadcrumb-item"><span>Offer</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="element-wrapper">
+                <h6 class="element-header">Offer</h6>
+                <%= render 'layouts/flash' %>
+
+                <div class="element-box">
+                  <h5 class="form-header">Offer Details</h5>
+                  <div class="form-desc">
+                    <%= link_to 'Edit', admin_edit_offer_path(@offer), class: 'mr-2 mb-2 btn btn-outline-info' %>
+                    <%= link_to 'Delete', admin_offer_path(@offer), class: 'mr-2 mb-2 btn btn-outline-danger', method: :delete, data: { confirm: 'Are yous sure?' } %>
+                  </div>
+
+                  <div class="table-responsive">
+                    <table class="table table-striped table-lightfont">
+                      <tr>
+                        <th>Company ID</th>
+                        <td><%= @offer.company_id %></td>
+                      </tr>
+                      <tr>
+                        <th>Name</th>
+                        <td><%= @offer.name %></td>
+                      </tr>
+                      <tr>
+                        <th>Amount</th>
+                        <td><%= @offer.amount %></td>
+                      </tr>
+                      <tr>
+                        <th>Downloaded</th>
+                        <td><%= @offer.downloaded %></td>
+                      </tr>
+                      <tr>
+                        <th>Link</th>
+                        <td><%= @offer.link %></td>
+                      </tr>
+                      <tr>
+                        <th>Logo</th>
+                        <td><%= image_tag @offer.logo %></td>
+                      </tr>
+                      <tr>
+                        <th>Amount</th>
+                        <td><%= @offer.amount %></td>
+                      </tr>
+                      <tr>
+                        <th>Active</th>
+                        <td><%= @offer.active %></td>
+                      </tr>
+                      <tr>
+                        <th>Reward Later</th>
+                        <td><%= @offer.reward_later %></td>
+                      </tr>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

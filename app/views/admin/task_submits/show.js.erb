@@ -1,0 +1,50 @@
+$('#modal').html('<div class="modal fade" id="demo-modal" tabindex="-1" role="dialog" aria-hidden="true">' +
+    '    <div class="modal-dialog" role="document">' +
+    '      <div class="modal-content">' +
+    '        <div class="modal-header">' +
+    '          <h5 class="modal-title">Task Submission</h5>' +
+    '          <button type="button" class="close" data-dismiss="modal" aria-label="Close">' +
+    '            <span aria-hidden="true">&times;</span>' +
+    '          </button>' +
+    '        </div>' +
+    '        <div class="modal-body">' +
+    '           <div class="table-responsive">' +
+    '           <table class="table table-striped table-lightfont">' +
+    '                       <tr>' +
+    '                           <th>ID</th>' +
+    '                           <td><%= @task_submit.id %></td>' +
+    '                       </tr>' +
+    '                       <tr>' +
+    '                           <th>Status</th>' +
+    '                           <td><%= TaskSubmit::STATUS_REVERSE[@task_submit.status] %></td>' +
+    '                       </tr>' +
+    '                       <tr>' +
+    '                           <th>Task</th>' +
+    '                           <td><%= link_to @task_submit.task.name, admin_task_path(@task_submit.task) %></td>' +
+    '                       </tr>' +
+    '                       <tr>' +
+    '                           <th>User</th>' +
+    '                           <td><%= link_to @task_submit.user.name, admin_user_path(@task_submit.user) %></td>' +
+    '                       </tr>' +
+    '                       <tr>' +
+    '                           <th>Submission</th>' +
+    '                           <td>' +
+    '                             <%= image_tag @task_submit.image %>' +
+    '                           </td>' +
+    '                       </tr>' +
+    '           </table>' +
+    '           </div>' +
+    '        </div>' +
+    '        <div class="modal-footer">' +
+    <% if @task_submit.status === TaskSubmit::STATUS[:approved] %>
+    '          <a href="<%= admin_unapprove_task_submit_path(@task_submit) %>" data-remote="true" data-method="patch" type="button" class="btn btn-danger">Unapprove</a>' +
+    <% else %>
+    '          <a href="<%= admin_approve_task_submit_path(@task_submit) %>" data-remote="true" data-method="post" type="button" class="btn btn-primary">Approve</a>' +
+    <% end %>
+    '          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>' +
+    '        </div>' +
+    '      </div>' +
+    '    </div>' +
+    '  </div>');
+
+$('#demo-modal').modal();

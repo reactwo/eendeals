@@ -1,0 +1,40 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_users_path %>">Users</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_user_path(@user) %>">User Details</a></li>
+        <li class="breadcrumb-item"><span>User Level Details</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper"><h6 class="element-header">User Levels</h6>
+            <div class="element-box"><h5 class="form-header">User Level <%= @level %> Details</h5>
+              <div class="table-responsive">
+                <table id="user-levels-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_user_level_path(id: @user.id, level: @level) %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Mobile</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

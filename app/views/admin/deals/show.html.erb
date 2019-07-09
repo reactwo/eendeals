@@ -1,0 +1,85 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Admin</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_deals_path %>">Deals</a></li>
+        <li class="breadcrumb-item"><span>Deal</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="row">
+            <div class="col-sm-12">
+              <div class="element-wrapper">
+                <h6 class="element-header">Deal</h6>
+                <%= render 'layouts/flash' %>
+
+                <div class="element-box">
+                  <h5 class="form-header">Deal Details</h5>
+                  <div class="form-desc">
+                    <%= link_to 'Edit', admin_edit_deal_path(@deal), class: 'mr-2 mb-2 btn btn-outline-info' %>
+                    <%= link_to 'Delete', admin_deal_path(@deal), class: 'mr-2 mb-2 btn btn-outline-danger', method: :delete, data: { confirm: 'Are yous sure?' } %>
+                  </div>.
+
+                  <div class="table-responsive">
+                    <table class="table table-striped table-lightfont">
+                      <tr>
+                        <th>Company ID</th>
+                        <td><%= @deal.company_id %></td>
+                      </tr>
+                      <tr>
+                        <th>Name</th>
+                        <td><%= @deal.name %></td>
+                      </tr>
+                      <tr>
+                        <th>Amount</th>
+                        <td><%= @deal.amount %></td>
+                      </tr>
+                      <tr>
+                        <th>Cap</th>
+                        <td><%= @deal.cap %></td>
+                      </tr>
+                      <tr>
+                        <th>Downloaded</th>
+                        <td><%= @deal.downloaded %></td>
+                      </tr>
+                      <tr>
+                        <th>Link</th>
+                        <td><%= @deal.link %></td>
+                      </tr>
+                      <tr>
+                        <th>Logo</th>
+                        <td><%= image_tag @deal.logo %></td>
+                      </tr>
+                      <tr>
+                        <th>Amount</th>
+                        <td><%= @deal.amount %></td>
+                      </tr>
+
+                      <tr>
+                        <th>Active</th>
+                        <td><%= @deal.active %></td>
+                      </tr>
+
+                      <tr>
+                        <th>Reward Later</th>
+                        <td><%= @deal.reward_later %></td>
+                      </tr>
+                    </table>
+                  </div>
+
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</body>

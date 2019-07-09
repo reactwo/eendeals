@@ -1,0 +1,50 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_quiz_attempts_path %>">Quiz Attempts</a></li>
+        <li class="breadcrumb-item"><span>Questions List</span></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper"><h6 class="element-header">Questions</h6>
+            <div class="element-box"><h5 class="form-header">Questions List</h5>
+              <div class="table-responsive">
+                <table width="100%" class="table table-striped table-lightfont">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Correct Choice</th>
+                    <th>Selected Choice</th>
+                    <th>Answered In</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @questions.each do |question| %>
+                  <tr>
+                    <td><%= question.id %></td>
+                    <td><%= link_to question.quiz_question.question, admin_edit_quiz_question_path(question.quiz_question) %></td>
+                    <td><%= question.quiz_question.correct_choice %></td>
+                    <td><%= question.selected_choice %></td>
+                    <td><%= question.time_taken %></td>
+                  </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

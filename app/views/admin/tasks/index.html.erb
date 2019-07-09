@@ -1,0 +1,51 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_tasks_path %>">Tasks</a></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper">
+            <h6 class="element-header">Tasks</h6>
+
+            <%= render 'layouts/flash' %>
+
+            <div class="element-box">
+              <h5 class="form-header">Tasks List</h5>
+              <div class="form-desc">
+                <a href="<%= admin_new_task_path %>" class="mr-2 mb-2 btn btn-outline-primary"> New Task</a>
+                <a href="<%= admin_upload_csv_task_path %>" class="mr-2 mb-2 btn btn-outline-primary"> Upload CSV</a>
+              </div>
+              <div class="table-responsive">
+                <table id="tasks-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_tasks_path %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Active</th>
+                    <th>Stats</th>
+                    <th>Amount Given</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

@@ -1,0 +1,43 @@
+<%
+  url = @wallpaper.new_record? ? admin_wallpapers_path : admin_wallpaper_path(@wallpaper)
+%>
+<%= form_for @wallpaper, url: url do |f| %>
+  <h5 class="form-header">New Wallpaper</h5>
+
+  <% if @wallpaper.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @wallpaper.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :category %>
+    <%= f.collection_select :category_id, Category.all, :id, :name, {}, { class: 'form-control' } %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :downloaded %>
+    <%= f.text_field :downloaded, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :premium %>
+    <%= f.check_box :premium, class: 'form-control' %>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

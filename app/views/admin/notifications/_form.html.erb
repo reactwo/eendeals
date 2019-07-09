@@ -1,0 +1,20 @@
+<%= form_for @notification, url: admin_notifications_path do |f| %>
+  <h5 class="form-header">New Notification</h5>
+
+  <% if @notification.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @notification.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :message %>
+    <%= f.text_field :message, class: 'form-control' %>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

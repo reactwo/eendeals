@@ -1,0 +1,91 @@
+<%
+url = @task.new_record? ? admin_tasks_path : admin_task_path(@task)
+%>
+<%= form_for @task, url: url do |f| %>
+  <% if @task.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @task.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :link %>
+      <%= f.text_field :link, class: 'form-control' %>
+    </div>
+    <div class="col-md-6">
+      <%= f.label :slug %>
+      <%= f.text_field :slug, class: 'form-control' %>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :instructions %>
+    <%= f.text_area :instructions, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :amount %>
+        <%= f.text_field :amount, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :cap %>
+        <%= f.text_field :cap, type: :number, class: 'form-control' %>
+      </div>
+    </div>
+
+    <div class="col-md-4">
+      <div class="form-group">
+        <%= f.label :run_days %>
+        <%= f.text_field :run_days, type: :number, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <%= f.label :start_time %>
+      <%= f.datetime_select :start_time %>
+    </div>
+
+    <div class="col-md-6">
+      <%= f.label :end_time %>
+      <%= f.datetime_select :end_time %>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-6">
+      <div class="form-check">
+        <label class="form-check-label">
+          <%= f.check_box :active, class: 'form-check-input' %>
+          Active
+        </label>
+      </div>
+    </div>
+    <div class="col-md-6">
+      <div class="form-check">
+        <label class="form-check-label">
+          <%= f.check_box :picture_upload, class: 'form-check-input' %>
+          Picture Upload
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

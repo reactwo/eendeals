@@ -1,0 +1,44 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="">Transactions</a></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper"><h6 class="element-header">Transactions</h6>
+            <div class="element-box">
+              <h5 class="form-header">Transactions List</h5>
+              <div class="table-responsive">
+                <table id="transactions-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_transactions_path %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Amount</th>
+                    <th>Category</th>
+                    <th>Direction</th>
+                    <th>From User</th>
+                    <th>Data</th>
+                    <th>User</th>
+                    <th>Created At</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

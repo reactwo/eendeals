@@ -1,0 +1,26 @@
+<%
+  url = @you_tube.new_record? ? admin_you_tubes_path : admin_you_tube_path(@you_tube)
+%>
+<%= form_for @you_tube, url: url do |f| %>
+  <% if @you_tube.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @you_tube.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :link %>
+    <%= f.text_field :link, class: 'form-control' %>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

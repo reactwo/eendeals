@@ -1,0 +1,205 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_users_path %>">Users</a></li>
+        <li class="breadcrumb-item"><span>User Details</span></li>
+      </ul>
+      <div class="content-panel-toggler"><i class="os-icon os-icon-grid-squares-22"></i><span>Sidebar</span></div>
+      <div class="content-i">
+        <div class="content-box">
+
+          <%= render 'layouts/flash' %>
+
+          <div class="row">
+            <div class="col-4">
+              <div class="user-profile compact">
+                <div class="up-head-w" style="background-image:url(img/profile_bg1.jpg)">
+                  <div class="up-main-info"><h2 class="up-header"><%= @user.name %></h2><h6
+                  class="up-sub-header"><%= @user.mobile %></h6></div>
+                  <svg xmlns:xlink="http://www.w3.org/1999/xlink" class="decor" width="842px"
+                       height="219px"
+                       viewBox="0 0 842 219" preserveAspectRatio="xMaxYMax meet"
+                       version="1.1" xmlns="http://www.w3.org/2000/svg">
+                    <g transform="translate(-381.000000, -362.000000)" fill="#FFFFFF">
+                      <path class="decor-path"
+                            d="M1223,362 L1223,581 L381,581 C868.912802,575.666667 1149.57947,502.666667 1223,362 Z"></path>
+                    </g>
+                  </svg>
+                </div>
+                <div class="up-controls">
+                  <div class="row">
+                    <div class="col-sm-6">
+                      <div class="value-pair">
+                        <div class="label">Status:</div>
+                        <span class="value badge badge-pill badge-success"><%= User::STATUS_REVERSE[@user.status] %></span>
+                        <% if @user.status === User::STATUS[:verified] %>
+                          <span class="value badge badge-pill badge-warning"><%= link_to 'Approve User', admin_approve_user_path(@user), class: '', style: 'color: white; text-decoration: none;', method: :post %></span>
+                        <% end %>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="up-contents">
+                  <div class="m-b">
+                    <% if @user.status === User::STATUS[:verified] %>
+                      <div class="row">
+                        <div class="col-sm-12 b-b">
+                          <div class="el-tablo centered padded-v">
+                            <div class="value"><%= @user.wallet ? 100 - @user.wallet.activation.to_f : 0 %></div>
+                            <div href="" class="label">Remaining For Activation</div>
+                          </div>
+                        </div>
+                      </div>
+                    <% end %>
+                    <div class="row m-b">
+                      <div class="col-sm-6 b-r b-b">
+                        <div class="el-tablo centered padded-v">
+                          <a href="<%= admin_transactions_path(id: @user.id, type: 'active') %>" class="value"><%= @user.wallet ? @user.wallet.active.to_f : 0 %></a>
+                          <div href="" class="label">Active Balance</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 b-b">
+                        <div class="el-tablo centered padded-v">
+                          <a href="<%= admin_transactions_path(id: @user.id, type: 'passive') %>" class="value"><%= @user.wallet ? @user.wallet.passive.to_f : 0 %></a>
+                          <div class="label">Passive Balance</div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 b-r b-b">
+                        <div class="el-tablo centered padded-v">
+                          <a href="#!" class="value"><%= @user.wallet ? @user.wallet.redeem.to_f : 0 %></a>
+                          <div href="" class="label">Redeem Balance</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 b-b">
+                        <div class="el-tablo centered padded-v">
+                          <a href="#!" class="value"><%= @user.wallet ? @user.wallet.screen_lock.to_f : 0 %></a>
+                          <div class="label">Screen Lock Balance</div>
+                        </div>
+                      </div>
+
+                      <div class="col-sm-6 b-r b-b">
+                        <div class="el-tablo centered padded-v">
+                          <a href="#!" class="value"><%= @user.wallet ? @user.wallet.total_earning.to_f : 0 %></a>
+                          <div href="" class="label">Total Earning</div>
+                        </div>
+                      </div>
+                      <div class="col-sm-6 b-b">
+                        <div class="el-tablo centered padded-v">
+                          <a href="#!" class="value"><%= @user.wallet ? -@user.wallet.total_redeem.to_f : 0 %></a>
+                          <div class="label">Total Redeem</div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="element-wrapper">
+                <div class="element-box">
+                  <h6 class="element-header">Actions</h6>
+
+                  <%= link_to 'Credit User', admin_credit_transaction_path(@user), class: 'btn btn-primary btn-block' %>
+                  <%= link_to 'Debit User', admin_debit_transaction_path(@user), class: 'btn btn-danger btn-block' %>
+                  <%= link_to 'Redeems', admin_user_redeems_path(@user), class: 'btn btn-primary btn-block' %>
+                </div>
+              </div>
+            </div>
+            <div class="col-5">
+              <div class="element-wrapper">
+                <div class="element-box">
+                  <%= form_for @user, url: admin_user_path(@user) do |f| %>
+                    <div class="element-info">
+                      <div class="element-info-with-icon">
+                        <div class="element-info-icon">
+                          <div class="os-icon os-icon-wallet-loaded"></div>
+                        </div>
+                        <div class="element-info-text">
+                          <h5 class="element-inner-header">Edit Profile</h5>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :name %>
+                      <%= f.text_field :name, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :mobile %>
+                      <%= f.text_field :mobile, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :email %>
+                      <%= f.text_field :email, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label :gender %>
+                      <%= f.collection_select :gender, User::GENDER_REVERSE, :first, :second, {}, class: 'form-control' %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label 'Refer ID' %>
+                      <%= f.text_field :refer_id, class: 'form-control', disabled: true %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label 'Sponsor ID' %>
+                      <%= f.text_field :sponsor_id, class: 'form-control', disabled: true %>
+                    </div>
+
+                    <div class="form-group">
+                      <%= f.label 'Real Sponsor ID' %>
+                      <%= f.text_field :real_sponsor_id, class: 'form-control', disabled: true %>
+                    </div>
+
+                    <div class="form-buttons-w">
+                      <button class="btn btn-primary" type="submit"> Submit</button>
+                    </div>
+                  <% end %>
+                </div>
+              </div>
+            </div>
+            <div class="col-3" style="margin-top: -32px;">
+              <div class="content-panel">
+                <div class="element-wrapper"><h6 class="element-header">Downline</h6>
+                  <div class="element-box-tp">
+                  </div>
+                </div>
+                <div class="element-wrapper"><h6 class="element-header">Level Progress</h6>
+                  <div class="element-box-tp">
+                    <div class="users-list-w">
+                      <% (1..10).each do |level| %>
+                        <div class="os-progress-bar primary">
+                          <div class="bar-labels">
+                            <div class="bar-label-left">
+                              <a href="<%= admin_user_level_path(id: @user.id, level: level) %>">Level <%= level %></a>
+                            </div>
+                            <% level_count = @user.user_refers.where(level: level).count %>
+                            <div class="bar-label-right"><span class="info"><%= level_count %>/<%= 5 ** level %></span></div>
+                          </div>
+                          <div class="bar-level-1" style="width: 100%; background-color: white">
+                            <div class="bar-level-3" style="width: <%= ((level_count.to_f / 5 ** level) * 100).round(2) %>%"></div>
+                          </div>
+                        </div>
+                      <% end %>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

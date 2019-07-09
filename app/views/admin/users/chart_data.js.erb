@@ -1,0 +1,6 @@
+removeData();
+var labels = <%= raw @labels %>
+var data = <%= raw @data %>
+labels.forEach(function(label, index) {
+   addData(label, data[index]);
+});

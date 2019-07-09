@@ -1,0 +1,45 @@
+<div class="menu-mobile menu-activated-on-click color-scheme-dark">
+  <div class="mm-logo-buttons-w">
+    <a class="mm-logo" href="/">
+      <img src="<%= asset_path 'logo-big.png' %>"><span>EEndeals Admin</span>
+    </a>
+    <div class="mm-buttons">
+      <div class="content-panel-open">
+        <div class="os-icon os-icon-grid-circles"></div>
+      </div>
+      <div class="mobile-menu-trigger">
+        <div class="os-icon os-icon-hamburger-menu-1"></div>
+      </div>
+    </div>
+  </div>
+  <div class="menu-and-user">
+    <div class="logged-user-w">
+      <div class="avatar-w"><img alt="" src="/images/avatar.jpg"></div>
+    </div>
+
+    <ul class="main-menu">
+      <%= render 'layouts/common_links' %>
+    </ul>
+  </div>
+</div>
+
+<div class="desktop-menu menu-top-image-w menu-activated-on-hover" style="background-image: url(/images/menu_bg.jpg)">
+  <div class="top-part-w">
+    <div class="logo-w">
+      <a class="logo" href="/">
+        <img src="<%= asset_path 'logo-big.png' %>"><span>EEndeals Admin</span>
+      </a>
+    </div>
+    <div class="user-and-search">
+      <div class="logged-user-w">
+        <div class="avatar-w"><img alt="" src="/images/avatar.jpg"></div>
+      </div>
+    </div>
+  </div>
+  <h2 class="page-menu-header">Dashboard</h2>
+  <div class="menu-top-image-i">
+    <ul class="main-menu">
+      <%= render 'layouts/common_links' %>
+    </ul>
+  </div>
+</div>

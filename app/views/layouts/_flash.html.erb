@@ -1,0 +1,24 @@
+<% if flash[:success] %>
+  <div class="alert alert-success alert-dismissible fade show" role="alert">
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true"> ×</span></button>
+    <strong><%= flash[:success] %></strong>
+  </div>
+<% end %>
+<% if flash[:warning] %>
+  <div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true"> ×</span></button>
+    <strong><%= flash[:warning] %></strong>
+  </div>
+<% end %>
+<% if flash[:error] %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true"> ×</span></button>
+    <strong><%= flash[:error] %></strong>
+  </div>
+<% end %>
+<% if flash[:notice] %>
+  <div class="alert alert-danger alert-dismissible fade show" role="alert">
+    <button aria-label="Close" class="close" data-dismiss="alert" type="button"><span aria-hidden="true"> ×</span></button>
+    <strong><%= flash[:notice] %></strong>
+  </div>
+<% end %>

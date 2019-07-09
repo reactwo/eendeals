@@ -1,0 +1,48 @@
+<body>
+<div class="all-wrapper menu-top">
+  <div class="layout-w">
+
+    <%= render 'layouts/header' %>
+
+    <div class="content-w">
+      <ul class="breadcrumb">
+        <li class="breadcrumb-item"><a href="<%= admin_path %>">Home</a></li>
+        <li class="breadcrumb-item"><a href="<%= admin_quiz_questions_path %>">Questions</a></li>
+      </ul>
+
+      <div class="content-i">
+        <div class="content-box">
+          <div class="element-wrapper"><h6 class="element-header">Questions</h6>
+            <div class="element-box"><h5 class="form-header">Questions List</h5>
+              <div class="form-desc">
+                Upload File
+                <%= form_for @quiz_question, url: admin_quiz_questions_path do |f| %>
+                <%= f.file_field :file %>
+                  <button class="mr-2 mb-2 btn btn-outline-primary" type="submit"> Submit</button>
+                <% end %>
+                <a href="/samples/questions.xlsx" class="mr-2 mb-2 btn btn-outline-primary"> Download Sample</a>
+              </div>
+              <div class="table-responsive">
+                <table id="quiz-questions-table" width="100%" class="table table-striped table-lightfont" data-source="<%= admin_quiz_questions_path %>">
+                  <thead>
+                  <tr>
+                    <th>ID</th>
+                    <th>Question</th>
+                    <th>Date</th>
+                    <th>Created At</th>
+                    <th>Actions</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="display-type"></div>
+</div>
+</body>

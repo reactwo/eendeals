@@ -1,0 +1,69 @@
+<%
+url = @product.new_record? ? admin_products_path : admin_product_path(@product)
+%>
+<%= form_for @product, url: url do |f| %>
+  <h5 class="form-header"><%= @product.new_record? ? 'New' : 'Edit' %> Product</h5>
+
+  <% if @product.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @product.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :link %>
+        <%= f.text_field :link, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :price %>
+        <%= f.text_field :price, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :slug %>
+        <%= f.text_field :slug, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :coins %>
+        <%= f.text_field :amount, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+  <div class="form-group">
+    <%= f.label :description %>
+    <%= f.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :image %>
+    <%= f.file_field :image, class: 'form-control' %>
+  </div>
+
+  <div class="form-check">
+    <label class="form-check-label">
+      <%= f.check_box :active, class: 'form-check-input' %>
+      Active
+    </label>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>

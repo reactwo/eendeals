@@ -1,0 +1,68 @@
+<%
+  url = @user.new_record? ? admin_users_path : admin_user_path(@user)
+%>
+<%= form_for @user, url: url do |f| %>
+  <h5 class="form-header">New User</h5>
+
+  <% if @user.errors.full_messages.count > 0 %>
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+      <% @user.errors.full_messages.each do |message| %>
+        <p><%= message %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <label for="offer_company_id">Email</label>
+        <%= f.text_field :email, class: 'form-control' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :mobile %>
+        <%= f.text_field :mobile, class: 'form-control', required: true, autocomplete: 'off' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :name %>
+    <%= f.text_field :name, class: 'form-control', required: true, autocomplete: 'off' %>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :refer_id %>
+        <%= f.text_field :refer_id, class: 'form-control', required: true, autocomplete: 'off' %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :gender %>
+        <%= f.collection_select :gender, User::GENDER_REVERSE, :first, :second, {}, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :real_sponsor_id %>
+        <%= f.text_field :real_sponsor_id, class: 'form-control', required: true %>
+      </div>
+    </div>
+    <div class="col-sm-6">
+      <div class="form-group">
+        <%= f.label :status %>
+        <%= f.collection_select :status, User::STATUS_REVERSE, :first, :second, {}, class: 'form-control' %>
+      </div>
+    </div>
+  </div>
+
+  <div class="form-buttons-w">
+    <button class="btn btn-primary" type="submit"> Submit</button>
+  </div>
+<% end %>
